@@ -1,0 +1,3 @@
+/home/kunlong/Desktop/深度图转换为点云/build/CMakeFiles/rebuild_cache.dir
+/home/kunlong/Desktop/深度图转换为点云/build/CMakeFiles/edit_cache.dir
+/home/kunlong/Desktop/深度图转换为点云/build/CMakeFiles/depth2cloud.dir

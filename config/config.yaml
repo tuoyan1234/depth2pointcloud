@@ -1,0 +1,52 @@
+depth_camera_intrinsic_params:
+  dfx: 442.05185684172238325
+  dfy: 442.05185684172238325
+  dxc: 158.16831588745117188
+  dcy: 216.55125045776367188
+
+color_camera_intrinsic_params:
+  fx: 320.00000
+  fy: 320.00000
+  cx: 319.41138
+  cy: 239.23407
+
+Coeffs: [-0.0496, 0.0565, -0.011407, 0.00035169, -0.01711749]
+
+depthPC2RGB_params:
+  R_lidar2camera:
+    - -1
+    - -0.000743948
+    - 0.000105662
+    - 0.000743767
+    - 0.999998
+    - 0.00170417
+    - -0.000106929
+    - -0.00170409
+    - 0.999999
+  T_lidar2camera:
+    - -0
+    - -1
+    - -0
+    - -0.059142954647541
+    - 1
+    - 0
+    - 0
+    - 0.000312
+    - 0
+    - 0
+    - 1
+    - -0.0002227248
+    - 0
+    - 0
+    - 0
+    - 1
+# path
+depthImgPath: /work/depth-image/
+rgbImgPath: /work/rgb-image/
+ply_save_path: /work/ply/
+projectedRgb_save_path: /work/projected_img/
+isDepthImg2PC: true
+isDepthImg2ColorPC: true
+isPcProjected2Img: true
+
+
