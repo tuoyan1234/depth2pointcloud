@@ -21,7 +21,7 @@ int main(){
 
     // 生成彩色点云
     if(depth2pointCloud.isDepthImg2ColorPC){
-        depth2pointCloud.depthImg2ColorPC(depthImgFiles, rgbImgFiles, depth2pointCloud.cameraParams, depth2pointCloud.ply_save_path);
+        depth2pointCloud.depthImg2ColorPC(depthImgFiles, rgbImgFiles, depth2pointCloud.cameraParams, depth2pointCloud.colorPoints_save_path);
         std::cout << "深度图转彩色点云完成" << std::endl;
     }else{
         std::cout << "未开启深度图转彩色点云功能" << std::endl;

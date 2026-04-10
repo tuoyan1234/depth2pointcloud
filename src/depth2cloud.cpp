@@ -121,6 +121,20 @@ bool Depth2PointCloud::readCameraParam(const std::string& t_cameraConfigFilePath
         std::cout << "ply_save_path is not exist" << std::endl;
         return false;
     }
+    // colorPoints save path
+    if(params_node["colorPoints_save_path"].IsDefined()){
+        t_depth2pointCloud.colorPoints_save_path = params_node["colorPoints_save_path"].as<std::string>();
+        // if directory not exist, create it
+        if(!boost::filesystem::exists(t_depth2pointCloud.colorPoints_save_path)){
+            boost::filesystem::create_directories(t_depth2pointCloud.colorPoints_save_path);
+            std::cout << "colorPoints_save_path is created" << std::endl;
+        }else{
+            std::cout << "colorPoints_save_path already exist !" << std::endl;
+        }
+    }else{
+        std::cout << "colorPoints_save_path is not exist" << std::endl;
+        return false;
+    }
     
     // projectedRgb_save_path
     if(params_node["projectedRgb_save_path"].IsDefined()){
@@ -240,7 +254,7 @@ void Depth2PointCloud::depthImg2pointCloud(std::vector<std::string>& depthFileDi
 }
 
 // 彩色点云转换
-void Depth2PointCloud::depthImg2ColorPC(std::vector<std::string>& depthFileDirs,std::vector<std::string>& rgbFileDirs,const cameraParam& t_cameraParams,const std::string& t_ply_save_path){
+void Depth2PointCloud::depthImg2ColorPC(std::vector<std::string>& depthFileDirs,std::vector<std::string>& rgbFileDirs,const cameraParam& t_cameraParams,const std::string& t_colorPoints_save_path){
     std::sort(depthFileDirs.begin(), depthFileDirs.end());
     std::sort(rgbFileDirs.begin(), rgbFileDirs.end());
     for(int img_index = 0; img_index < depthFileDirs.size(); img_index++){
@@ -277,7 +291,7 @@ void Depth2PointCloud::depthImg2ColorPC(std::vector<std::string>& depthFileDirs,
                 pointCloudRGB->push_back(point);
             }
         }
-        std::string save_plyFilePath = t_ply_save_path + ply_stem + ".ply";
+        std::string save_plyFilePath = t_colorPoints_save_path + ply_stem + ".ply";
         pcl::io::savePLYFileBinary(save_plyFilePath, *pointCloudRGB);
     }
 }
@@ -319,7 +333,7 @@ void Depth2PointCloud::depthImgProjetced2RgbImg(std::vector<std::string>& depthF
                 point.z = -(index_row - t_cameraParams.dcy) * point.y / t_cameraParams.dfy;
 
                 pcl::PointXYZRGB temp_point;
-                // 先对x =x, y = -z, z = y进行坐标变换
+                // 对x =x, y = -z, z = y进行坐标变换,转换到图像坐标系
                 temp_point.x = point.x;
                 temp_point.y = -point.z;
                 temp_point.z = point.y;

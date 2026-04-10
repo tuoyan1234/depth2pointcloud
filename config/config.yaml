@@ -1,52 +1,52 @@
 depth_camera_intrinsic_params:
-  dfx: 442.05185684172238325
-  dfy: 442.05185684172238325
-  dxc: 158.16831588745117188
-  dcy: 216.55125045776367188
+  dfx: 301.27933
+  dfy: 301.27933
+  dcx: 319.20093
+  dcy: 235.68080
 
 color_camera_intrinsic_params:
-  fx: 320.00000
-  fy: 320.00000
-  cx: 319.41138
-  cy: 239.23407
-
-Coeffs: [-0.0496, 0.0565, -0.011407, 0.00035169, -0.01711749]
+  fx: 396.65051
+  fy: 396.72641
+  cx: 329.94049
+  cy: 233.1148
+  Coeffs: [-0.36969, 0.16313, -0.00015, -0.00001, -0.037709]
 
 depthPC2RGB_params:
   R_lidar2camera:
-    - -1
-    - -0.000743948
-    - 0.000105662
-    - 0.000743767
-    - 0.999998
-    - 0.00170417
-    - -0.000106929
-    - -0.00170409
-    - 0.999999
+    - 0.99999
+    - -0.00518
+    - 0.00063
+    - 0.00518
+    - 0.99999
+    - 0.00132
+    - -0.00064
+    - -0.00132
+    - 1.00000
   T_lidar2camera:
     - -0
     - -1
     - -0
-    - -0.059142954647541
+    - -0.03582
     - 1
     - 0
     - 0
-    - 0.000312
+    - -0.00005
     - 0
     - 0
     - 1
-    - -0.0002227248
+    - 0.00044
     - 0
     - 0
     - 0
     - 1
 # path
-depthImgPath: /work/depth-image/
-rgbImgPath: /work/rgb-image/
-ply_save_path: /work/ply/
-projectedRgb_save_path: /work/projected_img/
+depthImgPath: ~/rDepth/
+rgbImgPath: ~/rColor/
+ply_save_path: ~/ply/
+colorPoints_save_path: ~/color-pc/
+projectedRgb_save_path: ~/projected-img/
 isDepthImg2PC: true
 isDepthImg2ColorPC: true
-isPcProjected2Img: true
+isPcProject2Img: true
 
 

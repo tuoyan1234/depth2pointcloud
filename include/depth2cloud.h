@@ -46,6 +46,7 @@ public:
     std::string depthImgPath, rgbImgPath;
     std::string ply_save_path;
     std::string projectedRgb_save_path;
+    std::string colorPoints_save_path;
     std::string ConfigFilePath;
 
     // 核心参数对象
