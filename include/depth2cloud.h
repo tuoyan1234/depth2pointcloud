@@ -7,6 +7,8 @@
 #include <pcl/io/ply_io.h>
 #include <pcl/point_cloud.h>
 #include <pcl/common/transforms.h>
+#include <pcl/visualization/cloud_viewer.h>
+#include <pcl/visualization/pcl_visualizer.h>
 #include <Eigen/Dense>
 
 #include <iostream>
@@ -14,6 +16,16 @@
 #include <vector>
 #include <filesystem>
 #include <algorithm>
+#include <thread>
+
+#define visColoredPoints 1
+#if visColoredPoints
+#define DATA_TYPE pcl::PointXYZRGB
+typedef pcl::PointCloud<DATA_TYPE> PointCloud;
+#else
+#define DATA_TYPE pcl::PointXYZ
+typedef pcl::PointCloud<DATA_TYPE> PointCloud;
+#endif
 
 class Depth2PointCloud
 {
@@ -67,8 +79,8 @@ public:
     std::vector<std::string> readImage(const std::string& t_depthFileDirs);
 
     // depth2pc 核心功能函数
-    void depthImg2pointCloud(std::vector<std::string>& depthFileDirs, const cameraParam& t_cameraParams, const std::string& t_ply_save_path);
-    void depthImg2ColorPC(std::vector<std::string>& depthFileDirs, std::vector<std::string>& rgbFileDirs, const cameraParam& t_cameraParams, const std::string& t_ply_save_path);
+    bool depthImg2pointCloud(std::vector<std::string>& depthFileDirs, const cameraParam& t_cameraParams, const std::string& t_ply_save_path);
+    bool depthImg2ColorPC(std::vector<std::string>& depthFileDirs, std::vector<std::string>& rgbFileDirs, const cameraParam& t_cameraParams, const std::string& t_ply_save_path);
     // pcProject2Img 点云投影功能函数
     void depthImgProjetced2RgbImg(std::vector<std::string>& depthFileDirs, std::vector<std::string>& rgbFileDirs, const cameraParam& t_cameraParams, const std::string& t_projectedRgb_save_path, const Eigen::Matrix4d& t_depthpc2img_RT);
 };

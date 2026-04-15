@@ -40,13 +40,13 @@ depthPC2RGB_params:
     - 0
     - 1
 # path
-depthImgPath: ~/rDepth/
-rgbImgPath: ~/rColor/
-ply_save_path: ~/ply/
-colorPoints_save_path: ~/color-pc/
-projectedRgb_save_path: ~/projected-img/
-isDepthImg2PC: true
+depthImgPath: /home/kunlong/Desktop/percep-data/percep_data_0417_4/percep_data/right/rDepth/
+rgbImgPath: /home/kunlong/Desktop/percep-data/percep_data_0417_4/percep_data/right/rColor/
+ply_save_path: /home/kunlong/Desktop/percep-data/percep_data_0417_4/percep_data/right/ply/
+colorPoints_save_path: /home/kunlong/Desktop/percep-data/percep_data_0417_4/percep_data/right/color-pc/
+projectedRgb_save_path: /home/kunlong/Desktop/percep-data/percep_data_0417_4/percep_data/right/projected-img/
+isDepthImg2PC: false
 isDepthImg2ColorPC: true
-isPcProject2Img: true
+isPcProject2Img: false
 
 

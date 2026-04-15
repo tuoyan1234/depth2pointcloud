@@ -216,7 +216,7 @@ std::vector<std::string> Depth2PointCloud::readImage(const std::string& t_depthF
     return depthImageFiles;
 }
 
-void Depth2PointCloud::depthImg2pointCloud(std::vector<std::string>& depthFileDirs, const Depth2PointCloud::cameraParam& t_cameraParams, const std::string& t_ply_save_path) {
+bool Depth2PointCloud::depthImg2pointCloud(std::vector<std::string>& depthFileDirs, const Depth2PointCloud::cameraParam& t_cameraParams, const std::string& t_ply_save_path) {
     std::sort(depthFileDirs.begin(), depthFileDirs.end());
     for(auto depthFile: depthFileDirs){
         std::string ply_stem = std::filesystem::path(depthFile).stem().string();
@@ -251,10 +251,11 @@ void Depth2PointCloud::depthImg2pointCloud(std::vector<std::string>& depthFileDi
         std::string save_plyFilePath = t_ply_save_path + ply_stem + ".ply";
         pcl::io::savePLYFileBinary(save_plyFilePath, *pointCloud);
     }
+    return true;
 }
 
 // 彩色点云转换
-void Depth2PointCloud::depthImg2ColorPC(std::vector<std::string>& depthFileDirs,std::vector<std::string>& rgbFileDirs,const cameraParam& t_cameraParams,const std::string& t_colorPoints_save_path){
+bool Depth2PointCloud::depthImg2ColorPC(std::vector<std::string>& depthFileDirs,std::vector<std::string>& rgbFileDirs,const cameraParam& t_cameraParams,const std::string& t_colorPoints_save_path){
     std::sort(depthFileDirs.begin(), depthFileDirs.end());
     std::sort(rgbFileDirs.begin(), rgbFileDirs.end());
     for(int img_index = 0; img_index < depthFileDirs.size(); img_index++){
@@ -294,6 +295,7 @@ void Depth2PointCloud::depthImg2ColorPC(std::vector<std::string>& depthFileDirs,
         std::string save_plyFilePath = t_colorPoints_save_path + ply_stem + ".ply";
         pcl::io::savePLYFileBinary(save_plyFilePath, *pointCloudRGB);
     }
+    return true;
 }
 
 //
